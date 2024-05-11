@@ -11,7 +11,7 @@ const OrderFood = () => {
             <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
-    <thead>
+    <thead className='text-red-500'>
       <tr>
         
         <th></th>
