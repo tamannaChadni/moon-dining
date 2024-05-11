@@ -1,0 +1,37 @@
+ [
+    {
+    "food_name": "Spaghetti Carbonara",
+    "food_image": "https://i.ibb.co/pRxCPtG/food1.jpg",
+    "food_category": "Pasta",
+    "price": "$12.99",
+    "made_by": "Chef Giovanni",
+    "food_origin": "Italy",
+    "description": "Spaghetti Carbonara is a classic Italian pasta dish made with spaghetti, eggs, cheese (Pecorino Romano or Parmigiano-Reggiano), pancetta or guanciale, and black pepper. The dish is cooked by tossing the hot pasta with a mixture of beaten eggs, grated cheese, and cooked pancetta or guanciale until creamy and smooth. It's a simple yet delicious dish, perfect for any occasion."
+    },
+    {
+    "food_name": "Sushi",
+    "food_image": "https://i.ibb.co/9wDwb2y/food2.jpg",
+    "food_category": "Japanese Cuisine",
+    "price": "$15.99",
+    "made_by": "Sushi Chef Akira",
+    "food_origin": "Japan",
+    "description": "Sushi is a traditional Japanese dish consisting of vinegared rice combined with various ingredients such as seafood (like tuna, salmon, or shrimp), vegetables (like cucumber or avocado), and sometimes tropical fruits. It's often served with soy sauce, wasabi, and pickled ginger. Sushi can be presented in various forms, including nigiri (hand-pressed sushi), maki (sushi rolls), and sashimi (sliced raw fish). It's known for its exquisite flavors, freshness, and meticulous preparation."
+    },
+    {
+    "food_name": "Chicken Tikka Masala",
+    "food_image": "https://i.ibb.co/w0MrG92/food3.jpg",
+    "food_category": "Indian Cuisine",
+    "price": "$14.99",
+    "made_by": "Chef Raj",
+    "food_origin": "India",
+    "description": "Chicken Tikka Masala is a popular Indian dish made with marinated and grilled chicken chunks (tikka) served in a rich, creamy tomato-based sauce (masala). The chicken is typically marinated in yogurt and a blend of Indian spices such as garam masala, cumin, coriander, and turmeric before being grilled or roasted. The sauce is made with tomatoes, cream, butter, and a mixture of spices like cumin, coriander, and paprika. It's a flavorful and comforting dish often served with rice or naan bread."
+    }
+    ]
+    
+    
+    
+    
+    
+    
+    
+    
