@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaRegEyeSlash,FaRegEye  } from "react-icons/fa";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
 
@@ -62,6 +63,9 @@ console.log(createUser);
 
   return (
     <div className="container mx-auto">
+      <Helmet>
+      <title>Moon Dining | Register page</title>
+    </Helmet>
       <div className="hero min-h-screen">
         <div className="hero-content flex-col">
           <div className="text-center lg:text-left">

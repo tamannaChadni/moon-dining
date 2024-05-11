@@ -4,6 +4,7 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import { FcGoogle } from "react-icons/fc";
 import { PiGithubLogoDuotone } from "react-icons/pi";
 import login from '../../../public/login.avif'
+import { Helmet } from 'react-helmet-async';
 
 
 const Login = () => {
@@ -61,6 +62,9 @@ const Login = () => {
 
     return (
         <div className='container mx-auto'>
+          <Helmet>
+      <title>Moon Dining | Login Page</title>
+    </Helmet>
             <div className="hero min-h-screen">
   <div className="hero-content flex-col lg:flex-row-reverse">
     <div className="text-center lg:text-left">

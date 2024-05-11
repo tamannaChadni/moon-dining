@@ -1,11 +1,18 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useLoaderData } from 'react-router-dom';
 
 const FoodDetails = () => {
   const food = useLoaderData();
   const {food_name,food_image,food_category,price,made_by,food_origin,description} = food;
     return (
+
+      
       <div className="container mx-auto mt-4">
+
+<Helmet>
+      <title>Moon Dining | Food  Details</title>
+    </Helmet>
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <figure>
           <img

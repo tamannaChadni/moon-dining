@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaStar } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
+import { Helmet } from 'react-helmet-async';
 
 // eslint-disable-next-line react/prop-types
 const SingleFood = ({food}) => {
@@ -9,7 +10,13 @@ const SingleFood = ({food}) => {
     const {food_image,food_name,food_category,price,} = food;
 
     return (
+
+
         <div className="card  bg-base-100 shadow-xl image-full">
+
+<Helmet>
+      <title>Moon Dining | Single Food Item</title>
+    </Helmet>
   <figure><img src={food_image} alt="food" /></figure>
   
   
