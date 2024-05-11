@@ -39,7 +39,7 @@ const router = createBrowserRouter([
         element: <MyList></MyList>,
       },
       {
-        path: "/all-food",
+        path: "/all-foods",
         element: <AllFood></AllFood>,
       },
       {
