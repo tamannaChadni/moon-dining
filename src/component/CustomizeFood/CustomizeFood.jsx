@@ -17,7 +17,7 @@ const CustomizeFood = () => {
             <div className=' rounded-lg'>
                 <img src={overlay} alt="" className=' w-full' />
                 {/* text content */}
-                <div className='flex items-center justify-between gap-44 p-5'>
+                <div className='lg:flex items-center justify-between gap-44 p-5'>
                 <div>
                     <p className='text-xl font-semibold text-white'>BREAKFAST</p>
                     <p className='text-white'>Special customized your breakfast</p>
@@ -33,7 +33,7 @@ const CustomizeFood = () => {
                 </div>
                 {/* text content */}
                 {/* image content */}
-                <div className='flex items-center gap-4 p-4 '>
+                <div className='lg:flex items-center gap-4 p-4 '>
                     <div>
                         <img src={one} alt=""  className=' rounded'/>
                         <p className=' text-white font-thin'>FRESH CHIPS</p>
