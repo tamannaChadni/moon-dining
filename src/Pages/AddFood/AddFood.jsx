@@ -37,7 +37,7 @@ const AddFood = () => {
       email,
     };
 
-    console.log(newFood);
+    // console.log(newFood);
 
     // send data to the server
 
