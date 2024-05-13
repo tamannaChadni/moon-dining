@@ -26,6 +26,13 @@ const AllFood = () => {
             </div>
           </div>
         </div>
+        <div className="mt-4 text-center">
+        <div className="join">
+  <input className="input input-bordered join-item" placeholder="Food"/>
+  <button className="btn join-item rounded-r-full bg-red-600 text-white">Search</button>
+</div>  
+        </div>
+        
         {/* img+text */}
         <section className="py-6 sm:py-12 dark:bg-gray-100 dark:text-gray-800">
         <div className="container p-6 mx-auto space-y-8">

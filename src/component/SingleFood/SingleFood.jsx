@@ -26,9 +26,12 @@ const SingleFood = ({food}) => {
     <button className=' btn-sm bg-red-600 text-white rounded'>Offer</button>
    <span className='text-red-500 bg-white rounded'><CiHeart /></span> 
   </div>
-    <h2 className="card-title">{name}</h2>
+  <div>
+  <h2 className="card-title">{name}</h2>
     <p><span className='font-bold'>Category :</span> {category}</p>
     <p><span className='font-bold'>Price :</span> {price}</p>
+  </div>
+    
     
     <div className="card-actions justify-end">
     <div className='flex  justify-evenly   gap-32 items-center'>
