@@ -1,10 +1,10 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const FoodDetails = () => {
   const food = useLoaderData();
-  const {food_name,food_image,food_category,price,made_by,food_origin,description} = food;
+  const {name,image,category,price,email,origin,description} = food;
     return (
 
       
@@ -18,25 +18,26 @@ const FoodDetails = () => {
           <img
             alt=""
             className="object-cover w-full h-52 dark:bg-gray-500"
-            src={food_image}
+            src={image}
           />
         </figure>
         <div className="card-body">
-          <h2 className="card-title font-bold text-2xl">{food_name}</h2>
-          <p className=" font-extralight"> {food_category}</p>
+          <h2 className="card-title font-bold text-2xl">{name}</h2>
+          <p className=" font-extralight"> {category}</p>
           
           <p className=" font-light">{ price}</p>
           
-          <p className="font-semibold"> {made_by}</p>
+          <p className="font-semibold">Added by : {email}</p>
           
           
           <p className="font-semibold">
-            <span className="text-red-500">{food_origin}</span>
+            <span className="text-red-500">{origin}</span>
           </p>
           <p className="font-semibold">
             <span className="text-red-500">{description}</span>
           </p>
-          <button className='bg-red-700 text-white btn-sm btn'>Pruchase</button>
+          <Link to="/purchase-food"><button className='bg-red-700 text-white btn-sm btn'>Pruchase
+          </button></Link>
         </div>
       </div>
 

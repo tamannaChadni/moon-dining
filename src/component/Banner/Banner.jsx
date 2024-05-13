@@ -1,5 +1,6 @@
 import React from 'react';
 import 'animate.css';
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
     return (
@@ -10,7 +11,7 @@ const Banner = () => {
     <div className="max-w-md">
       <h1 className="mb-5 text-4xl font-bold animate__animated animate__fadeInDown">Good Place Good Food</h1>
       <p className="mb-5 animate__animated animate__pulse">Always Fresh and Delightful and immerse yourself in a culinary adventure that celebrates the essence of fine dining at our restaurant and Discover a world of gastronomic delights at our restaurant, where every meal is a masterpiece.</p>
-      <button className="btn bg-red-500 btn-error text-white btn-sm">All Foods</button>
+      <Link to="/all-foods"><button className="btn bg-red-500 btn-error text-white btn-sm">All Foods</button></Link>
     </div>
   </div>
 </div>

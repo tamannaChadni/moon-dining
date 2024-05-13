@@ -30,7 +30,8 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home></Home>,
-        loader: () => fetch("food.json"),
+        // loader: () => fetch("food.json"),
+        loader: () => fetch("http://localhost:5000/foods"),
       },
       
 
@@ -41,10 +42,12 @@ const router = createBrowserRouter([
       {
         path: "/all-foods",
         element: <AllFood></AllFood>,
+        loader: () => fetch("http://localhost:5000/foods"),
       },
       {
-        path: "/food-details",
+        path: "/foods/:_id",
         element: <FoodDetails></FoodDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/foods/${params._id}`),
       },
       {
         path: "/purchase-food",

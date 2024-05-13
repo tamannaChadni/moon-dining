@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import SingleFood from '../SingleFood/SingleFood';
 
 const TopFoods = () => {
@@ -19,13 +19,13 @@ const TopFoods = () => {
             <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
               {foods.slice(1, 4).map((food) => (
                 <SingleFood
-                  key={food.id}
+                  key={food._id}
                   food={food}
                 ></SingleFood>
               ))}
             </div>
             <div className='mx-auto text-center'>
-            <button className='btn btn-sm bg-red-700 text-white '>See All Foods</button>
+            <Link to="/all-foods"><button className='btn btn-sm bg-red-700 text-white '>See All Foods</button></Link>
             </div>
           </div>
         </section>
