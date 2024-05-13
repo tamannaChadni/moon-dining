@@ -4,7 +4,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 const FoodDetails = () => {
   const food = useLoaderData();
-  const {name,image,category,price,email,origin,description} = food;
+  const {_id,name,image,category,price,email,origin,description} = food;
     return (
 
       
@@ -22,6 +22,7 @@ const FoodDetails = () => {
           />
         </figure>
         <div className="card-body">
+          <Link to={_id}></Link>
           <h2 className="card-title font-bold text-2xl">{name}</h2>
           <p className=" font-extralight"> {category}</p>
           

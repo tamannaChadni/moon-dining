@@ -11,7 +11,7 @@ const AddFood = () => {
 
 
   const handleAddFood = (event) => {
-    // console.log("clicked");
+    
     event.preventDefault();
 
     const form = event.target;
@@ -52,7 +52,7 @@ const AddFood = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.insertedId) {
             Swal.fire({
                 title: 'Success!',

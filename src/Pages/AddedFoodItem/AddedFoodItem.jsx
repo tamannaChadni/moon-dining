@@ -1,61 +1,52 @@
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import React, { useContext, useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
+import { AuthContext } from "../../Providers/AuthProvider";
+
+import AddedItemRow from "./AddedItemRow";
+// import { useLoaderData } from 'react-router-dom';
 
 const AddedFoodItem = () => {
-    return (
-        <div className='containter mx-auto'>
-            <Helmet>
-      <title>Moon Dining | Added Food items</title>
-    </Helmet>
-            
-            <div className="overflow-x-auto">
-  <table className="table">
-    {/* head */}
-    <thead className='text-red-500'>
-      <tr>
-        
-        <th></th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Update</th>
-      </tr>
-    </thead>
-    <tbody>
-      {/* row 1 */}
-      <tr>
-        
-        <td>
-          <div className="flex items-center gap-3">
-            <div className="avatar">
-              <div className="mask mask-squircle w-12 h-12">
-                <img src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div className="font-bold">Hart Hagerty</div>
-              <div className="text-sm opacity-50">United States</div>
-            </div>
-          </div>
-        </td>
-        <td>
-          Zemlak, Daniel and Leannon
-          <br/>
-          <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-        </td>
-        <td>Purple</td>
-        <th>
-          <button className="btn btn-ghost btn-xs">details</button>
-        </th>
-      </tr>
-      
-    </tbody>
-    
-    
-  </table>
-</div>
+  // const foods = useLoaderData()
+  const { user } = useContext(AuthContext);
+  const [addedFood, setAddedFood] = useState();
 
-            </div>
-    );
+  // const url =`http://localhost:5000/foods/${user?.email}`;
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/${user?.email}/foods`)
+      .then((res) => res.json())
+      // .then(data=>console.log(data))
+      .then((data) => setAddedFood(data));
+  }, [user]);
+  // console.log(addedFood);
+
+  return (
+    <div className="containter mx-auto">
+      <Helmet>
+        <title>Moon Dining | Added Food items</title>
+      </Helmet>
+
+      <div className="overflow-x-auto">
+        <table className="table">
+          {/* head */}
+          <thead className="text-red-500">
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Update</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* row 1 */}
+            {addedFood?.map((food) => (
+              <AddedItemRow key={food._id} food={food}></AddedItemRow>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 };
 
 export default AddedFoodItem;
