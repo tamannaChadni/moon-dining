@@ -1,64 +1,87 @@
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
+import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
+import OrderRow from "./OrderRow";
+
 
 const OrderFood = () => {
-    return (
-        <div className='containter mx-auto'>
-            <Helmet>
-      <title>Moon Dining | Ordered Food items</title>
-    </Helmet>
-            
-            <div className="overflow-x-auto">
-  <table className="table">
-    {/* head */}
-    <thead className='text-red-500'>
-      <tr>
-        
-        <th></th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Time</th>
-        <th>Owner</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      {/* row 1 */}
-      <tr>
-        
-        <td>
-          <div className="flex items-center gap-3">
-            <div className="avatar">
-              <div className="mask mask-squircle w-12 h-12">
-                <img src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div className="font-bold">Hart Hagerty</div>
-              <div className="text-sm opacity-50">United States</div>
-            </div>
-          </div>
-        </td>
-        <td>
-          Zemlak, Daniel and Leannon
-          <br/>
-          <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-        </td>
-        <td>Purple</td>
-        <th>
-          <button className="btn btn-ghost btn-xs">details</button>
-        </th>
-      </tr>
-      
-    </tbody>
-    
-    
-  </table>
-</div>
 
-            </div>
-       
-    );
+  const foods = useLoaderData();
+
+  const [orderFood, setOrderFood] = useState(foods);
+
+
+
+
+
+
+  const handleDelete = (_id) => {
+    // console.log(_id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/foods/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire(
+                "Deleted!",
+                "Your order has been deleted.",
+                "success"
+              );
+              // eslint-disable-next-line react/prop-types
+              const remainingOrder = orderFood.filter((s) => s._id !== _id);
+              // console.log(remainingOrder);
+              setOrderFood(remainingOrder);
+            }
+          });
+      }
+    });
+  };
+
+
+  return (
+    <div className="containter mx-auto">
+      <Helmet>
+        <title>Moon Dining | Ordered Food items</title>
+      </Helmet>
+
+      <div className="overflow-x-auto">
+        <table className="table">
+          {/* head */}
+          <thead className="text-red-500">
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Time</th>
+              <th>Owner</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* row 1 */}
+            {orderFood?.map((food) => (
+              <OrderRow key={food._id} food={food}
+              handleDelete={handleDelete}
+              ></OrderRow>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 };
 
 export default OrderFood;
