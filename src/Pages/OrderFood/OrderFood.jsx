@@ -7,9 +7,10 @@ import OrderRow from "./OrderRow";
 
 const OrderFood = () => {
 
-  const foods = useLoaderData();
+  const purchase = useLoaderData();
+  // console.log(purchase);
 
-  const [orderFood, setOrderFood] = useState(foods);
+  const [orderFood, setOrderFood] = useState(purchase);
 
 
 
@@ -28,7 +29,7 @@ const OrderFood = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/foods/${_id}`, {
+        fetch(`http://localhost:5000/purchase/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -62,8 +63,8 @@ const OrderFood = () => {
           {/* head */}
           <thead className="text-red-500">
             <tr>
-              <th></th>
               <th>Name</th>
+              <th>Quality</th>
               <th>Price</th>
               <th>Time</th>
               <th>Owner</th>

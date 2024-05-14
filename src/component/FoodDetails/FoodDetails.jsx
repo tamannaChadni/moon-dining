@@ -22,7 +22,7 @@ const FoodDetails = () => {
           />
         </figure>
         <div className="card-body">
-          <Link to={_id}></Link>
+          {/* <Link to={_id}></Link> */}
           <h2 className="card-title font-bold text-2xl">{name}</h2>
           <p className=" font-extralight"> {category}</p>
           
@@ -37,7 +37,7 @@ const FoodDetails = () => {
           <p className="font-semibold">
             <span className="text-red-500">{description}</span>
           </p>
-          <Link to="/purchase-food"><button className='bg-red-700 text-white btn-sm btn'>Pruchase
+          <Link to={`/purchase/${_id}`}><button className='bg-red-700 text-white btn-sm btn'>Pruchase
           </button></Link>
         </div>
       </div>
