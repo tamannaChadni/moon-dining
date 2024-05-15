@@ -134,7 +134,7 @@ const Navbar = () => {
                 </div>
                 <ul
                   tabIndex={0}
-                  className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                  className="lg:dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
                 >
                   <Link to="/addedFood">
                     {" "}
@@ -155,14 +155,6 @@ const Navbar = () => {
                 </ul>
               </div>
             </NavLink>
-            {/* <NavLink
-              className={({ isActive }) =>
-                isActive ? "text-red-500 font-bold  font-sans" : "font-normal"
-              }
-              to="/my-list"
-            >
-              My List
-            </NavLink> */}
           </ul>
         </div>
 
