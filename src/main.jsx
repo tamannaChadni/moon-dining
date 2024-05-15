@@ -21,6 +21,7 @@ import AddFood from "./Pages/AddFood/AddFood";
 import OrderFood from "./Pages/OrderFood/OrderFood";
 import UpdateFood from "./Pages/UpdateFood/UpdateFood";
 import AddedFoodItem from "./Pages/AddedFoodItem/AddedFoodItem";
+import AddGalleryInfo from "./Pages/Gallery/AddGalleryInfo";
 
 const router = createBrowserRouter([
   {
@@ -63,7 +64,11 @@ const router = createBrowserRouter([
       {
         path: "/gallery",
         element: <Gallery></Gallery>,
-        loader: () => fetch("http://localhost:5000/foods"),
+        loader: () => fetch("http://localhost:5000/gallery"),
+      },
+      {
+        path: "/gallery-info",
+        element: <AddGalleryInfo></AddGalleryInfo>,
       },
       {
         path: "/add-food",
