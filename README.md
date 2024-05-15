@@ -3,7 +3,7 @@ Assignment_ID: assignment_category_0005
 # Moon Dining
 
 Live site:
-[ ]
+[ https://moon-dining.web.app/]
 
 - Firebase authentication
 - Added different npm packages
