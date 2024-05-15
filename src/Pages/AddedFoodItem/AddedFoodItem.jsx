@@ -13,7 +13,7 @@ const AddedFoodItem = () => {
   // const url =`http://localhost:5000/foods/${user?.email}`;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user?.email}/foods`)
+    fetch(`https://moon-dining-server.vercel.app/users/${user?.email}/foods`)
       .then((res) => res.json())
       // .then(data=>console.log(data))
       .then((data) => setAddedFood(data));

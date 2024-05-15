@@ -29,7 +29,7 @@ const OrderFood = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/purchase/${_id}`, {
+        fetch(`https://moon-dining-server.vercel.app/purchase/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

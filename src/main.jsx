@@ -12,7 +12,7 @@ import AuthProvider from "./Providers/AuthProvider";
 
 import { HelmetProvider } from "react-helmet-async";
 
-import MyList from "./component/MyList/MyList";
+
 import FoodDetails from "./component/FoodDetails/FoodDetails";
 import AllFood from "./Pages/AllFood/AllFood";
 import PurchaseFood from "./Pages/PurchaseFood/PurchaseFood";
@@ -22,6 +22,8 @@ import OrderFood from "./Pages/OrderFood/OrderFood";
 import UpdateFood from "./Pages/UpdateFood/UpdateFood";
 import AddedFoodItem from "./Pages/AddedFoodItem/AddedFoodItem";
 import AddGalleryInfo from "./Pages/Gallery/AddGalleryInfo";
+import PrivateRoute from "./component/Route/PrivateRoute";
+
 
 const router = createBrowserRouter([
   {
@@ -33,38 +35,36 @@ const router = createBrowserRouter([
         index: true,
         element: <Home></Home>,
         // loader: () => fetch("food.json"),
-        loader: () => fetch("http://localhost:5000/foods"),
+        loader: () => fetch("https://moon-dining-server.vercel.app/foods"),
       },
       
 
-      {
-        path: "/my-list",
-        element: <MyList></MyList>,
-      },
+      
       {
         path: "/all-foods",
         element: <AllFood></AllFood>,
-        loader: () => fetch("http://localhost:5000/foods"),
+        loader: () => fetch("https://moon-dining-server.vercel.app/foods"),
       },
+      
       {
         path: "/foods/:_id",
-        element: <FoodDetails></FoodDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/foods/${params._id}`),
+        element:<PrivateRoute> <FoodDetails></FoodDetails></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://moon-dining-server.vercel.app/foods/${params._id}`),
       },
       {
         path: "/addedFood",
-        element: <AddedFoodItem></AddedFoodItem>
+        element:<PrivateRoute> <AddedFoodItem></AddedFoodItem></PrivateRoute>
         
       },
       {
         path: "/purchase/:_id",
         element: <PurchaseFood></PurchaseFood>,
-        loader: ({ params }) => fetch(`http://localhost:5000/foods/${params._id}`),
+        loader: ({ params }) => fetch(`https://moon-dining-server.vercel.app/foods/${params._id}`),
       },
       {
         path: "/gallery",
         element: <Gallery></Gallery>,
-        loader: () => fetch("http://localhost:5000/gallery"),
+        loader: () => fetch("https://moon-dining-server.vercel.app/gallery"),
       },
       {
         path: "/gallery-info",
@@ -76,19 +76,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/order-food",
-        element: <OrderFood></OrderFood>,
-        loader: () => fetch("http://localhost:5000/purchase"),
+        element:<PrivateRoute> <OrderFood></OrderFood></PrivateRoute>,
+        loader: () => fetch("https://moon-dining-server.vercel.app/purchase"),
       },
       {
         path: "/update-food/:_id",
         element: <UpdateFood></UpdateFood>,
-        loader: ({ params }) => fetch(`http://localhost:5000/foods/${params._id}`),
+        loader: ({ params }) => fetch(`https://moon-dining-server.vercel.app/foods/${params._id}`),
       },
 
       {
         path: "/login",
         element: <Login></Login>,
-        loader: () => fetch("food.json"),
+        loader: () => fetch("https://moon-dining-server.vercel.app/"),
       },
       {
         path: "/register",

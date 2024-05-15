@@ -31,7 +31,7 @@ const UpdateFood = () => {
       description,
     };
 
-    fetch(`http://localhost:5000/foods/${_id}`, {
+    fetch(`https://moon-dining-server.vercel.app/foods/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -35,14 +35,42 @@ const Navbar = () => {
           >
             Gallery
           </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "text-red-500 font-bold font-sans" : "font-normal"
-            }
-            to="/my-list"
-          >
-            My List
-          </NavLink>
+          <NavLink>
+              <div className="dropdown dropdown-end">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-red-500 font-bold  font-sans"
+                      : "font-normal"
+                  }
+                >
+                  My Profile
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <Link to="/addedFood">
+                    {" "}
+                    <li>
+                      <a>Added My food</a>
+                    </li>
+                  </Link>
+                  <Link to="/add-food">
+                    <li>
+                      <a>Add A food</a>
+                    </li>
+                  </Link>
+                  <Link to="/order-food">
+                    <li>
+                      <a>Order food</a>
+                    </li>
+                  </Link>
+                </ul>
+              </div>
+            </NavLink>
         </ul>
       </div>
       <div className="navbar-center">
@@ -91,14 +119,50 @@ const Navbar = () => {
             >
               Gallery
             </NavLink>
-            <NavLink
+            <NavLink>
+              <div className="dropdown dropdown-top">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-red-500 font-bold  font-sans"
+                      : "font-normal"
+                  }
+                >
+                  My Profile
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <Link to="/addedFood">
+                    {" "}
+                    <li>
+                      <a>Added My food</a>
+                    </li>
+                  </Link>
+                  <Link to="/add-food">
+                    <li>
+                      <a>Add A food</a>
+                    </li>
+                  </Link>
+                  <Link to="/order-food">
+                    <li>
+                      <a>Order food</a>
+                    </li>
+                  </Link>
+                </ul>
+              </div>
+            </NavLink>
+            {/* <NavLink
               className={({ isActive }) =>
                 isActive ? "text-red-500 font-bold  font-sans" : "font-normal"
               }
               to="/my-list"
             >
               My List
-            </NavLink>
+            </NavLink> */}
           </ul>
         </div>
 

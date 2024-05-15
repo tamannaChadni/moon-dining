@@ -27,7 +27,7 @@ const AddGalleryInfo = () => {
 
     // send data to the server
 
-    fetch("http://localhost:5000/gallery", {
+    fetch("https://moon-dining-server.vercel.app/gallery", {
       method: "POST",
       headers: {
         "content-type": "application/json",

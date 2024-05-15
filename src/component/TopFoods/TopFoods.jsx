@@ -1,9 +1,18 @@
-import React from 'react';
+import React,{ useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import SingleFood from '../SingleFood/SingleFood';
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const TopFoods = () => {
     const foods = useLoaderData();
+
+    const { loading } = useContext(AuthContext);
+
+  if (loading) {
+    return (
+      <span className="loading loading-dots loading-lg search-loader"></span>
+    );
+  }
     return (
         <div className="container mx-auto mt-4 ">
         <section className="py-6 sm:py-12 dark:bg-gray-100 dark:text-gray-800">
