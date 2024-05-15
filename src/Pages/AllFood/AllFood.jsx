@@ -1,12 +1,23 @@
-import React, {  useState } from "react";
+import React, {  useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import SingleFood from "../../component/SingleFood/SingleFood";
 import { useLoaderData } from "react-router-dom";
 import axios from 'axios';
+import { AuthContext } from "../../Providers/AuthProvider";
+import "./loader.css";
 
 
 const AllFood = () => {
   const foods = useLoaderData();
+
+
+  const { loading } = useContext(AuthContext);
+
+  if (loading) {
+    return (
+      <span className="loading loading-dots loading-lg search-loader"></span>
+    );
+  }
 
   const [searchQuery, setSearchQuery] = useState('');
   const [foodItems, setFoodItems] = useState([]);

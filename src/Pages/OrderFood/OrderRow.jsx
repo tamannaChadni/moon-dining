@@ -18,7 +18,7 @@ const OrderRow = ({ food, handleDelete }) => {
       <td className=" text-red-700 font-extrabold">{quantity}</td>
 
       <td className=" text-red-700 font-extrabold">{price}</td>
-      <td>{date}</td>
+      <td>{new Date(date).toLocaleDateString()}</td>
       <td>{email}</td>
       <th>
         <button
