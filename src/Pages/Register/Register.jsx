@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaRegEyeSlash,FaRegEye  } from "react-icons/fa";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
 
 const Register = () => {
 
@@ -13,7 +14,7 @@ console.log(createUser);
   const [resgisterSuccess, setResgisterSuccess] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleRegister = (e) => {
+  const handleRegister = async  e => {
     e.preventDefault();
     console.log("form submited");
     const form = new FormData(e.currentTarget);
@@ -26,6 +27,15 @@ console.log(createUser);
 
     
     console.log(name, email, password, photo);
+
+    const { data } = await axios.post(
+      'http://localhost:5000/jwt',
+      {
+        email: createUser?.email,
+      },
+      { withCredentials: true }
+    )
+    console.log(data);
 
     // reset error & success message
 
