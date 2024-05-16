@@ -5,6 +5,8 @@ import { FcGoogle } from "react-icons/fc";
 import { PiGithubLogoDuotone } from "react-icons/pi";
 import login from '../../../public/login.avif'
 import { Helmet } from 'react-helmet-async';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
@@ -16,27 +18,56 @@ const Login = () => {
   const [loginError, setLoginError] = useState("");
   const [loginSuccess, setLoginSuccess] = useState("");
 
-    const handleLogin = e =>{
-        e.preventDefault();
-        const form = new FormData(e.currentTarget);
-        const email = form.get('email');
-        const password = form.get('password');
-        console.log(email,password);
+    // const handleLogin = e =>{
+    //     e.preventDefault();
+    //     const form = new FormData(e.currentTarget);
+    //     const email = form.get('email');
+    //     const password = form.get('password');
+    //     // console.log(email,password);
 
-        setLoginError("");
-        setLoginSuccess("");
+    //     setLoginError("");
+    //     setLoginSuccess("");
 
 
-        signInUser(email,password)
-        .then(result=>{
-          console.log(result);
-          navigate(location?.state ? location.state : '/');
+    //     signInUser(email,password)
+    //     .then(result=>{
+    //       console.log(result);
+    //       navigate(location?.state ? location.state : '/');
 
-        })
-        .catch(error =>{
-          console.log(error);
-        })
+    //     })
+    //     .catch(error =>{
+    //       console.log(error);
+    //     })
        
+    // }
+
+
+
+
+    const handleLogin = async e => {
+      e.preventDefault()
+      const form = e.target
+      const email = form.email.value
+      const pass = form.password.value
+      console.log({ email, pass })
+      try {
+        //User Login
+        const result = await signInUser(email, pass)
+        console.log(result.user)
+        const { data } = await axios.post(
+          'http://localhost:5000/jwt',
+          {
+            email: result?.user?.email,
+          },
+          { withCredentials: true }
+        )
+        console.log(data)
+        navigate(location?.state ? location.state : '/');
+        toast.success('Signin Successful')
+      } catch (err) {
+        console.log(err)
+        toast.error(err?.message)
+      }
     }
 
     const handleGoogleSignIn = () =>{
