@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 // eslint-disable-next-line react/prop-types
 const SingleFood = ({ food }) => {
   // eslint-disable-next-line react/prop-types
-  const { _id, image, name, category, price } = food;
+  const { _id, image, name, category, price} = food;
 
   return (
     <div className="card  bg-base-100 shadow-xl image-full">
@@ -36,6 +36,7 @@ const SingleFood = ({ food }) => {
             <span className="font-bold">Price :</span> {price}
           </p>
         </div>
+        
 
         <div className="card-actions justify-end">
           <div className="flex  justify-evenly   gap-32 items-center">

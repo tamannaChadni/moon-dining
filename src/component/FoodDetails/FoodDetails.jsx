@@ -37,6 +37,9 @@ const FoodDetails = () => {
           <p className="font-semibold">
             <span className="text-red-500">{description}</span>
           </p>
+          {/* <p className="font-semibold">
+            <span className="text-red-500">{food_count}</span>
+          </p> */}
           <Link to={`/purchase/${_id}`}><button className='bg-red-700 text-white btn-sm btn'>Pruchase
           </button></Link>
         </div>

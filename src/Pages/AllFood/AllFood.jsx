@@ -1,17 +1,57 @@
-import React, {  useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import SingleFood from "../../component/SingleFood/SingleFood";
 import { useLoaderData } from "react-router-dom";
-import axios from 'axios';
+
 import { AuthContext } from "../../Providers/AuthProvider";
 import "./loader.css";
 
-
 const AllFood = () => {
-  const foods = useLoaderData();
-
-
+  const initialFoods = useLoaderData();
   const { loading } = useContext(AuthContext);
+  const [foods, setFoods] = useState(initialFoods);
+
+  const [foodCount, setFoodCount] = useState(0);
+  const[foodsPerPage,setfoodsPerPage] =useState(3);
+
+  const [currentPage,setCurrentPage] = useState(0);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/foodCount")
+      .then((res) => res.json())
+      .then((data) => setFoodCount(data.count));
+  }, []);
+  
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/foods?page=${currentPage}&size=${foodsPerPage}`)
+      .then((res) => res.json())
+      .then((data) => setFoods(data));
+  }, [currentPage,foodsPerPage]);
+
+
+
+  const numberOfPages = Math.ceil(foodCount / foodsPerPage);
+  const pages = [...Array(numberOfPages).keys()];
+
+  const handleFoodItemPerPage = e =>{
+    const val = parseInt(e.target.value);
+    setfoodsPerPage(val);
+    setCurrentPage(0);
+
+  }
+
+  const handlePrevBtn = () =>{
+    if (currentPage> 0) {
+      setCurrentPage(currentPage-1);
+    }
+  }
+  const handleNextBtn = () =>{
+    if (currentPage < pages.length -1 ) {
+      setCurrentPage(currentPage+1);
+    }
+  }
+  
 
   if (loading) {
     return (
@@ -19,54 +59,6 @@ const AllFood = () => {
     );
   }
 
-  const [searchQuery, setSearchQuery] = useState('');
-  const [foodItems, setFoodItems] = useState([]);
-
-  // const [search, setSearch] = useState("");
-
-  // const handleSearch = (e) => {
-  //   e.preventDefault();
-  //   const text = e.target.search.value
-  //   setSearch(text);
-  //   // setSearch(search);
-  // };
-// console.log(search);
-
-const handleSearchChange = (e) => {
-  setSearchQuery(e.target.value);
-};
-
-
-const handleSearch = async () => {
-  try {
-    const response = await axios.get('https://moon-dining-server.vercel.app/foods/search', {
-      params: { query: searchQuery },
-    });
-    setFoodItems(response.data);
-  } catch (error) {
-    console.error('Error fetching food items:', error);
-  }
-};
-
-// useEffect(()=>{
-//   // eslint-disable-next-line no-unused-vars
-//   const getData = async() =>{
-//     // eslint-disable-next-line no-unused-vars
-//     const {data} = await axios(
-//       `http://localhost:5000/foods/search?search=${search}`
-//     )
-//     getData()
-//   }
-// },[search])
-  // useEffect(() => {
-  //   fetch(`http://localhost:5000/foods/search?search=${search}`)
-  //     .then((res) => res.json())
-  //     // .then(data=>console.log(data))
-  //     .then((data) => setSearch(data));
-  // }, []);
-
-
-  // console.log(search);
   return (
     <div>
       <Helmet>
@@ -88,29 +80,20 @@ const handleSearch = async () => {
             </div>
           </div>
         </div>
-        <form onSubmit={handleSearch}>
-        <div className="mt-4 text-center">
-          <div className="join">
-            <input
-              className="input input-bordered join-item"
-              placeholder="Food name"
-              type="text"
-              name="search"
-              value={searchQuery}
-        onChange={handleSearchChange}
-             
-              
-            />
-            <button className="btn join-item rounded-r-full bg-red-600 text-white">
-              Search
-            </button>
-            <ul>
-        {foodItems.map((item) => (
-          <li key={item._id}>{item.name}</li>
-        ))}
-      </ul>
+        <form>
+          <div className="mt-4 text-center">
+            <div className="join">
+              <input
+                className="input input-bordered join-item"
+                placeholder="Food name"
+                type="text"
+                name="search"
+              />
+              <button className="btn join-item rounded-r-full bg-red-600 text-white">
+                Search
+              </button>
+            </div>
           </div>
-        </div>
         </form>
 
         {/* img+text */}
@@ -131,6 +114,18 @@ const handleSearch = async () => {
             </div>
           </div>
         </section>
+        <div className=" text-center  mt-2 mb-2">
+        <button className="btn btn-sm bg-red-600 text-white" onClick={handlePrevBtn}>Previous</button>
+          {/* {pages.map((page) => (
+            <button
+              className="btn btn-sm bg-red-600 text-white"  onClick={handleFoodItemPerPage} value={foodsPerPage}
+              key={page}
+            >
+              {page}
+            </button>
+          ))} */}
+          <button className="btn btn-sm bg-red-600 text-white" onClick={handleNextBtn}>Next</button>
+        </div>
       </div>
     </div>
   );

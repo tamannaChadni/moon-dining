@@ -35,7 +35,8 @@ const router = createBrowserRouter([
         index: true,
         element: <Home></Home>,
         // loader: () => fetch("food.json"),
-        loader: () => fetch("https://moon-dining-server.vercel.app/foods"),
+        // loader: () => fetch("https://moon-dining-server.vercel.app/foods"),
+        loader: () => fetch("http://localhost:5000/foods"),
       },
       
 
@@ -43,13 +44,15 @@ const router = createBrowserRouter([
       {
         path: "/all-foods",
         element: <AllFood></AllFood>,
-        loader: () => fetch("https://moon-dining-server.vercel.app/foods"),
+        // loader: () => fetch("https://moon-dining-server.vercel.app/foods"),
+        loader: () => fetch('http://localhost:5000/foods'),
       },
       
       {
         path: "/foods/:_id",
         element:<PrivateRoute> <FoodDetails></FoodDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`https://moon-dining-server.vercel.app/foods/${params._id}`),
+        // loader: ({ params }) => fetch(`https://moon-dining-server.vercel.app/foods/${params._id}`),
+        loader: ({ params }) => fetch(`http://localhost:5000/foods/${params._id}`),
       },
       {
         path: "/addedFood",

@@ -33,8 +33,8 @@ const AddFood = () => {
       price,
       country,
       description,
-      
       email,
+      // food_count: 0,
     };
 
     // console.log(newFood);
@@ -173,6 +173,17 @@ const AddFood = () => {
             className="input input-bordered w-full"
           />
         </label>
+        {/* <label className="form-control md:w-1/2">
+          <div className="label">
+            <span className="label-text text-red-400">Food Count</span>
+          </div>
+          <input
+            name="food_count"
+            type="text"
+            placeholder="Food Count"
+            className="input input-bordered w-full"
+          />
+        </label> */}
         
       </div>
      

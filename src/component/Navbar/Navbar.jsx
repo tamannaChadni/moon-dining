@@ -55,17 +55,17 @@ const Navbar = () => {
                   <Link to="/addedFood">
                     {" "}
                     <li>
-                      <a>Added My food</a>
+                      Added My food
                     </li>
                   </Link>
                   <Link to="/add-food">
                     <li>
-                      <a>Add A food</a>
+                      Add A food
                     </li>
                   </Link>
                   <Link to="/order-food">
                     <li>
-                      <a>Order food</a>
+                     Order food
                     </li>
                   </Link>
                 </ul>
@@ -139,17 +139,17 @@ const Navbar = () => {
                   <Link to="/addedFood">
                     {" "}
                     <li>
-                      <a>Added My food</a>
+                      Added My food
                     </li>
                   </Link>
                   <Link to="/add-food">
                     <li>
-                      <a>Add A food</a>
+                      Add A food
                     </li>
                   </Link>
                   <Link to="/order-food">
                     <li>
-                      <a>Order food</a>
+                      Order food
                     </li>
                   </Link>
                 </ul>
