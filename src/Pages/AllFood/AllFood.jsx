@@ -16,6 +16,8 @@ const AllFood = () => {
 
   const [currentPage,setCurrentPage] = useState(0);
 
+
+  const [searchQuery, setSearchQuery] = useState("");
   useEffect(() => {
     fetch("http://localhost:5000/foodCount")
       .then((res) => res.json())
@@ -24,10 +26,11 @@ const AllFood = () => {
   
 
   useEffect(() => {
-    fetch(`http://localhost:5000/foods?page=${currentPage}&size=${foodsPerPage}`)
+    // fetch(`http://localhost:5000/foods?page=${currentPage}&size=${foodsPerPage}`)
+    fetch(`http://localhost:5000/foods?page=${currentPage}&size=${foodsPerPage}&search=${searchQuery}`)
       .then((res) => res.json())
       .then((data) => setFoods(data));
-  }, [currentPage,foodsPerPage]);
+  }, [currentPage,foodsPerPage,searchQuery]);
 
 
 
@@ -50,6 +53,15 @@ const AllFood = () => {
     if (currentPage < pages.length -1 ) {
       setCurrentPage(currentPage+1);
     }
+  }
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    setCurrentPage(0); // Reset to the first page on a new search
   }
   
 
@@ -88,8 +100,10 @@ const AllFood = () => {
                 placeholder="Food name"
                 type="text"
                 name="search"
+                value={searchQuery}
+                onChange={handleSearchChange}
               />
-              <button className="btn join-item rounded-r-full bg-red-600 text-white">
+              <button onClick={handleSearchSubmit} className="btn join-item rounded-r-full bg-red-600 text-white">
                 Search
               </button>
             </div>
